@@ -23,7 +23,7 @@ type EmailConfig struct {
 type EmailRequest struct {
 	Email   string `json:"email" binding:"required,email"`
 	Name    string `json:"name"`
-	message string `json:"message"`
+	Message string `json:"message"`
 }
 
 func main() {
@@ -71,7 +71,7 @@ func main() {
 			"\r\n"+
 			"%s\r\n", config.SMTPEmail,
 			fmt.Sprintf("From: %v", emailReq.Name),
-			fmt.Sprintf("Email: %v\nName: %v\nMessage: %v", emailReq.Email, emailReq.Name, emailReq.message)))
+			fmt.Sprintf("Email: %v\nName: %v\nMessage: %v", emailReq.Email, emailReq.Name, emailReq.Message)))
 
 		// Set up authentication
 		auth := smtp.PlainAuth("", config.SMTPUser, config.SMTPPassword, config.SMTPHost)
