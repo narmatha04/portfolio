@@ -33,15 +33,6 @@
             color: #A47E64;
             font-weight: 600;
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 40vh;
-        }
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -106,6 +97,20 @@
         @keyframes blink {
             50% { opacity: 0; }
         }
+        
+        /* Toast Notification Style */
+        .toast {
+            position: fixed;
+            bottom: 1.25rem;
+            right: 1.25rem;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 100;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -113,15 +118,15 @@
     <header class="bg-opacity-80 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
+                <div class="flex items-center space-x-4">
                     <a href="#home" class="text-xl font-bold brand-text-dark">Narmatha Jayasankar</a>
-                    <a href="https://www.linkedin.com/in/narmatha-jayashankar/" target="_blank" rel="noopener noreferrer" class="hover:brand-text transition-colors"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.linkedin.com/in/narmatha-jayashankar/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:brand-text transition-colors text-xl"><i class="fab fa-linkedin"></i></a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#overview" class="nav-link px-3 py-2 rounded-md text-sm font-medium brand-text-dark">Why Me?</a>
                         <a href="#deepdive" class="nav-link px-3 py-2 rounded-md text-sm font-medium brand-text-dark">Experience Deep Dive</a>
-                        <a href="#timeline" class="nav-link px-3 py-2 rounded-md text-sm font-medium brand-text-dark">Career Timeline</a>
+                        <a href="#timeline" class="nav-link px-3 py-2 rounded-md text-sm font-medium brand-text-dark">Journey & Background</a>
                         <a href="#skills" class="nav-link px-3 py-2 rounded-md text-sm font-medium brand-text-dark">Skills</a>
                         <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium brand-text-dark">Contact</a>
                     </div>
@@ -140,7 +145,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#overview" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Why Me?</a>
                 <a href="#deepdive" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Experience Deep Dive</a>
-                <a href="#timeline" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Career Timeline</a>
+                <a href="#timeline" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Journey & Background</a>
                 <a href="#skills" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Skills</a>
                 <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
@@ -167,78 +172,13 @@
                     <p class="mt-2 text-lg text-gray-600">Here’s how my experience aligns with core competencies. Click to flip.</p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Card 1 -->
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <i class="fas fa-robot text-4xl brand-text mb-4"></i>
-                                <h3 class="font-bold text-lg brand-text-dark">Process Automation & AI</h3>
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Experience developing automated pipelines with LLMs (GPT) to extract and structure data, significantly reducing manual effort and enabling scalable analysis.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <i class="fas fa-clipboard-list text-4xl brand-text mb-4"></i>
-                                <h3 class="font-bold text-lg brand-text-dark">Requirements Gathering</h3>
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Proven ability to lead client project meetings to gather comprehensive requirements, conduct market research, and propose effective solution frameworks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <i class="fas fa-chart-pie text-4xl brand-text mb-4"></i>
-                                <h3 class="font-bold text-lg brand-text-dark">BI & Data Visualization</h3>
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Expertise in analyzing application traffic and business data, creating impactful visualizations in Looker Studio & Power BI to drive application enhancements.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <i class="fas fa-database text-4xl brand-text mb-4"></i>
-                                <h3 class="font-bold text-lg brand-text-dark">Data Analysis & Modelling</h3>
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Adept at using Python and SQL to analyze complex data. Mastered predictive and prescriptive analytics and simulation modelling to solve business problems.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 5 -->
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <i class="fas fa-users text-4xl brand-text mb-4"></i>
-                                <h3 class="font-bold text-lg brand-text-dark">Stakeholder Management</h3>
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Skilled in delivering key presentations to acquire projects, training stakeholders on tool usage, and fostering collaboration between technical and business teams.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 6 -->
-                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <i class="fas fa-rocket text-4xl brand-text mb-4"></i>
-                                <h3 class="font-bold text-lg brand-text-dark">Project Delivery & Impact</h3>
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Managed five concurrent projects, delivered actionable value reports from website audits, and contributed to a 15% increase in customer retention through data insights.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Cards remain the same -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="fas fa-robot text-4xl brand-text mb-4"></i><h3 class="font-bold text-lg brand-text-dark">Process Automation & AI</h3></div><div class="flip-card-back"><p>Experience developing automated pipelines with LLMs (GPT) to extract and structure data, significantly reducing manual effort and enabling scalable analysis.</p></div></div></div>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="fas fa-clipboard-list text-4xl brand-text mb-4"></i><h3 class="font-bold text-lg brand-text-dark">Requirements Gathering</h3></div><div class="flip-card-back"><p>Proven ability to lead client project meetings to gather comprehensive requirements, conduct market research, and propose effective solution frameworks.</p></div></div></div>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="fas fa-chart-pie text-4xl brand-text mb-4"></i><h3 class="font-bold text-lg brand-text-dark">BI & Data Visualization</h3></div><div class="flip-card-back"><p>Expertise in analyzing application traffic and business data, creating impactful visualizations in Looker Studio & Power BI to drive application enhancements.</p></div></div></div>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="fas fa-database text-4xl brand-text mb-4"></i><h3 class="font-bold text-lg brand-text-dark">Data Analysis & Modelling</h3></div><div class="flip-card-back"><p>Adept at using Python, Java, and SQL to analyze complex data. Mastered predictive and prescriptive analytics and simulation modelling to solve business problems.</p></div></div></div>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="fas fa-users text-4xl brand-text mb-4"></i><h3 class="font-bold text-lg brand-text-dark">Stakeholder Management</h3></div><div class="flip-card-back"><p>Skilled in delivering key presentations to acquire projects, training stakeholders on tool usage, and fostering collaboration between technical and business teams.</p></div></div></div>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="fas fa-rocket text-4xl brand-text mb-4"></i><h3 class="font-bold text-lg brand-text-dark">Project Delivery & Impact</h3></div><div class="flip-card-back"><p>Managed five concurrent projects, delivered actionable value reports from website audits, and contributed to a 15% increase in customer retention through data insights.</p></div></div></div>
                 </div>
             </div>
         </section>
@@ -261,154 +201,16 @@
                         </nav>
                     </div>
                     <div class="mt-8">
-                        <!-- Tab 1: AI & Process Automation -->
-                        <div id="tab1" class="tab-content">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">Automating Data Extraction with AI</h3>
-                            <p class="text-gray-600 mb-6">At Moore Cooperative, I developed an automated pipeline using Large Language Models (GPT) to solve a critical business challenge: extracting structured salary data from unstructured PDFs. This project highlights my ability to leverage cutting-edge AI for practical business solutions.</p>
-                            <ul class="list-disc list-inside space-y-2 text-gray-600">
-                                <li>Engineered effective prompts to match and map job roles with high accuracy.</li>
-                                <li>Implemented confidence scoring to evaluate the AI's mapping performance.</li>
-                                <li>Enabled scalable analysis of job-role alignment and compensation benchmarking.</li>
-                                <li>Significantly reduced manual effort in data processing and mapping.</li>
-                            </ul>
-                        </div>
-                        <!-- Tab 2: BI & Visualization -->
-                        <div id="tab2" class="tab-content hidden">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">Dashboarding & Data Storytelling</h3>
-                            <p class="text-gray-600 mb-6">I specialize in designing and building intuitive BI dashboards in Looker Studio and Power BI. Below is a representative mockup of how I present complex data in a clean, actionable format to empower decision-makers.</p>
-                            
-                            <!-- BI Dashboard Mockup -->
-                            <div class="bg-white p-4 sm:p-6 rounded-lg border border-[#EAE5E1] shadow-md">
-                                <h4 class="font-bold text-lg brand-text-dark mb-4">Client Performance Overview</h4>
-                                <!-- KPI Cards -->
-                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
-                                    <div class="bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]">
-                                        <p class="text-sm text-gray-500">User Engagement</p>
-                                        <p class="text-2xl font-bold brand-text-dark">82.4%</p>
-                                    </div>
-                                    <div class="bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]">
-                                        <p class="text-sm text-gray-500">Conversion Rate</p>
-                                        <p class="text-2xl font-bold brand-text-dark">4.1%</p>
-                                    </div>
-                                    <div class="bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1] col-span-2 sm:col-span-1">
-                                        <p class="text-sm text-gray-500">Active Users</p>
-                                        <p class="text-2xl font-bold brand-text-dark">15.2K</p>
-                                    </div>
-                                </div>
-                                <!-- Charts Area -->
-                                <div class="grid md:grid-cols-3 gap-6">
-                                    <div class="md:col-span-2 bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]">
-                                        <p class="font-semibold text-gray-700 mb-2">User Activity Over Time</p>
-                                        <div class="h-40 flex items-end space-x-2">
-                                            <div class="w-full h-1/3 bg-[#D3C5BC] rounded-t-sm"></div>
-                                            <div class="w-full h-1/2 bg-[#D3C5BC] rounded-t-sm"></div>
-                                            <div class="w-full h-2/3 bg-[#A47E64] rounded-t-sm"></div>
-                                            <div class="w-full h-3/4 bg-[#A47E64] rounded-t-sm"></div>
-                                            <div class="w-full h-2/3 bg-[#D3C5BC] rounded-t-sm"></div>
-                                            <div class="w-full h-full bg-[#A47E64] rounded-t-sm"></div>
-                                            <div class="w-full h-5/6 bg-[#D3C5BC] rounded-t-sm"></div>
-                                        </div>
-                                    </div>
-                                    <div class="md:col-span-1 bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]">
-                                        <p class="font-semibold text-gray-700 mb-2">Traffic Sources</p>
-                                        <div class="w-32 h-32 mx-auto my-3 rounded-full flex items-center justify-center bg-[#A47E64]">
-                                             <div class="w-24 h-24 rounded-full bg-[#FDFBF8]"></div>
-                                        </div>
-                                        <p class="text-xs text-center text-gray-500">Organic, Direct, Referral</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Tab 3: Strategic Insights -->
-                        <div id="tab3" class="tab-content hidden">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">From Analysis to Actionable Strategy</h3>
-                            <p class="text-gray-600 mb-6">My focus extends beyond data reporting to providing strategic insights that drive tangible business outcomes. I am adept at conducting market research, analyzing value drivers, and translating findings into recommendations that boost performance.</p>
-                            <ul class="list-disc list-inside space-y-2 text-gray-600">
-                                <li>At Testpress, researched and provided necessary insights that boosted sales by 10%.</li>
-                                <li>Analyzed value drivers and tailored analytics journeys for dining-focused clients to improve marketing effectiveness.</li>
-                                <li>Audited websites and applications to detect gaps and delivered actionable value reports.</li>
-                                <li>Conducted comprehensive market research on website and app requirements to inform strategy.</li>
-                            </ul>
-                        </div>
-                        <!-- Tab 4: Project Management -->
-                        <div id="tab4" class="tab-content hidden">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">Delivering Projects with Impact</h3>
-                            <p class="text-gray-600 mb-6">I have a proven track record of successfully managing and delivering analytical projects from conception to completion. My experience includes handling multiple projects simultaneously while ensuring clear communication and alignment with business objectives.</p>
-                            <ul class="list-disc list-inside space-y-2 text-gray-600">
-                                <li>Successfully managed five concurrent projects at Bounteous X Accolite.</li>
-                                <li>Led client project meetings independently to gather requirements and propose solution frameworks.</li>
-                                <li>Awarded "Most Compelling Pitch" at the 3-day TechStarts Startup Weekend for a well-structured project proposal.</li>
-                                <li>Runner-up in the Decision Analytics Challenge, demonstrating strong project execution under pressure.</li>
-                            </ul>
-                        </div>
-                        <!-- Tab 5: Stakeholder Engagement -->
-                        <div id="tab5" class="tab-content hidden">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">Training and Empowering Teams</h3>
-                            <p class="text-gray-600 mb-6">A key part of my role is bridging the gap between technical data and business users. I excel at training stakeholders, presenting complex information clearly, and fostering a data-driven culture within teams.</p>
-                            <ul class="list-disc list-inside space-y-2 text-gray-600">
-                                <li>Trained stakeholders on tool usage and data interpretation, which increased customer retention by 15%.</li>
-                                <li>Delivered key presentations to acquire new projects and communicate findings to leadership.</li>
-                                <li>Partnered with public relations teams to develop press releases and promotional materials.</li>
-                                <li>Served as a two-time Alumni Speaker, delivering engaging talks on Data Analytics to students.</li>
-                            </ul>
-                        </div>
+                        <!-- Tab Content remains the same -->
+                        <div id="tab1" class="tab-content"> <h3 class="text-xl font-semibold brand-text-dark mb-4">Automating Data Extraction with AI</h3> <p class="text-gray-600 mb-6">At Moore Cooperative, I developed an automated pipeline using Large Language Models (GPT) to solve a critical business challenge: extracting structured salary data from unstructured PDFs. This project highlights my ability to leverage cutting-edge AI for practical business solutions.</p> <ul class="list-disc list-inside space-y-2 text-gray-600"> <li>Engineered effective prompts to match and map job roles with high accuracy.</li> <li>Implemented confidence scoring to evaluate the AI's mapping performance.</li> <li>Enabled scalable analysis of job-role alignment and compensation benchmarking.</li> <li>Significantly reduced manual effort in data processing and mapping.</li> </ul> </div>
+                        <div id="tab2" class="tab-content hidden"> <h3 class="text-xl font-semibold brand-text-dark mb-4">Dashboarding & Data Storytelling</h3> <p class="text-gray-600 mb-6">I specialize in designing and building intuitive BI dashboards in Looker Studio and Power BI. Below is a representative mockup of how I present complex data in a clean, actionable format to empower decision-makers.</p> <div class="bg-white p-4 sm:p-6 rounded-lg border border-[#EAE5E1] shadow-md"> <h4 class="font-bold text-lg brand-text-dark mb-4">Client Performance Overview</h4> <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6"> <div class="bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]"> <p class="text-sm text-gray-500">User Engagement</p> <p class="text-2xl font-bold brand-text-dark">82.4%</p> </div> <div class="bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]"> <p class="text-sm text-gray-500">Conversion Rate</p> <p class="text-2xl font-bold brand-text-dark">4.1%</p> </div> <div class="bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1] col-span-2 sm:col-span-1"> <p class="text-sm text-gray-500">Active Users</p> <p class="text-2xl font-bold brand-text-dark">15.2K</p> </div> </div> <div class="grid md:grid-cols-3 gap-6"> <div class="md:col-span-2 bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]"> <p class="font-semibold text-gray-700 mb-2">User Activity Over Time</p> <div class="h-40 flex items-end space-x-2"> <div class="w-full h-1/3 bg-[#D3C5BC] rounded-t-sm"></div> <div class="w-full h-1/2 bg-[#D3C5BC] rounded-t-sm"></div> <div class="w-full h-2/3 bg-[#A47E64] rounded-t-sm"></div> <div class="w-full h-3/4 bg-[#A47E64] rounded-t-sm"></div> <div class="w-full h-2/3 bg-[#D3C5BC] rounded-t-sm"></div> <div class="w-full h-full bg-[#A47E64] rounded-t-sm"></div> <div class="w-full h-5/6 bg-[#D3C5BC] rounded-t-sm"></div> </div> </div> <div class="md:col-span-1 bg-[#FDFBF8] p-4 rounded-lg border border-[#EAE5E1]"> <p class="font-semibold text-gray-700 mb-2">Traffic Sources</p> <div class="w-32 h-32 mx-auto my-3 rounded-full flex items-center justify-center bg-[#A47E64]"> <div class="w-24 h-24 rounded-full bg-[#FDFBF8]"></div> </div> <p class="text-xs text-center text-gray-500">Organic, Direct, Referral</p> </div> </div> </div> </div>
+                        <div id="tab3" class="tab-content hidden"> <h3 class="text-xl font-semibold brand-text-dark mb-4">From Analysis to Actionable Strategy</h3> <p class="text-gray-600 mb-6">My focus extends beyond data reporting to providing strategic insights that drive tangible business outcomes. I am adept at conducting market research, analyzing value drivers, and translating findings into recommendations that boost performance.</p> <ul class="list-disc list-inside space-y-2 text-gray-600"> <li>At Testpress, researched and provided necessary insights that boosted sales by 10%.</li> <li>Analyzed value drivers and tailored analytics journeys for dining-focused clients to improve marketing effectiveness.</li> <li>Audited websites and applications to detect gaps and delivered actionable value reports.</li> <li>Conducted comprehensive market research on website and app requirements to inform strategy.</li> </ul> </div>
+                        <div id="tab4" class="tab-content hidden"> <h3 class="text-xl font-semibold brand-text-dark mb-4">Delivering Projects with Impact</h3> <p class="text-gray-600 mb-6">I have a proven track record of successfully managing and delivering analytical projects from conception to completion. My experience includes handling multiple projects simultaneously while ensuring clear communication and alignment with business objectives.</p> <ul class="list-disc list-inside space-y-2 text-gray-600"> <li>Successfully managed five concurrent projects at Bounteous X Accolite.</li> <li>Led client project meetings independently to gather requirements and propose solution frameworks.</li> <li>Awarded "Most Compelling Pitch" at the 3-day TechStarts Startup Weekend for a well-structured project proposal.</li> <li>Runner-up in the Decision Analytics Challenge, demonstrating strong project execution under pressure.</li> </ul> </div>
+                        <div id="tab5" class="tab-content hidden"> <h3 class="text-xl font-semibold brand-text-dark mb-4">Training and Empowering Teams</h3> <p class="text-gray-600 mb-6">A key part of my role is bridging the gap between technical data and business users. I excel at training stakeholders, presenting complex information clearly, and fostering a data-driven culture within teams.</p> <ul class="list-disc list-inside space-y-2 text-gray-600"> <li>Trained stakeholders on tool usage and data interpretation, which increased customer retention by 15%.</li> <li>Delivered key presentations to acquire new projects and communicate findings to leadership.</li> <li>Partnered with public relations teams to develop press releases and promotional materials.</li> <li>Served as a two-time Alumni Speaker, delivering engaging talks on Data Analytics to students.</li> </ul> </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- <section id="deepdive" class="py-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold brand-text-dark">Experience Deep Dive</h2>
-                    <p class="mt-2 text-lg text-gray-600">This interactive dashboard showcases my core competencies. Click through the tabs to explore how I turn data into insight and action.</p>
-                </div>
-                <div class="max-w-4xl mx-auto">
-                    <div class="border-b border-gray-300">
-                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
-                            <button data-tab="tab1" class="tab active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">AI & Process Automation</button>
-                            <button data-tab="tab2" class="tab whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">BI & Analytics</button>
-                            <button data-tab="tab3" class="tab whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Stakeholder Engagement</button>
-                        </nav>
-                    </div>
-                    <div class="mt-8">
-                        <div id="tab1" class="tab-content">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">Automating Data Extraction with AI</h3>
-                            <p class="text-gray-600 mb-6">At Moore Cooperative, I developed an automated pipeline using Large Language Models (GPT) to solve a critical business challenge: extracting structured salary data from unstructured PDFs. This project highlights my ability to leverage cutting-edge AI for practical business solutions.</p>
-                            <ul class="list-disc list-inside space-y-2 text-gray-600 mb-8">
-                                <li>Engineered effective prompts to match and map job roles with high accuracy.</li>
-                                <li>Implemented confidence scoring to evaluate the AI's mapping performance.</li>
-                                <li>Enabled scalable analysis of job-role alignment and compensation benchmarking.</li>
-                                <li>Significantly reduced manual effort in data processing and mapping.</li>
-                            </ul>
-                        </div>
-                        <div id="tab2" class="tab-content hidden">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">Driving Insights with BI & Analytics</h3>
-                            <p class="text-gray-600 mb-6">As a Senior Analyst at Bounteous, I specialized in using the Google Analytics suite and BI tools to turn web traffic data into strategic enhancements. My work directly contributed to improving client outcomes and retention.</p>
-                             <ul class="list-disc list-inside space-y-2 text-gray-600 mb-8">
-                                <li>Analyzed website traffic using GA4, GTM, and Looker Studio to provide actionable insights.</li>
-                                <li>Audited websites and applications to detect gaps and delivered actionable value reports.</li>
-                                <li>My data-driven recommendations and stakeholder training contributed to a 15% increase in customer retention.</li>
-                            </ul>
-                            <div class="chart-container">
-                                <canvas id="retentionChart"></canvas>
-                            </div>
-                             <p class="text-center text-sm text-gray-500 mt-2">Visualization of client retention uplift from data-driven strategies.</p>
-                        </div>
-                        <div id="tab3" class="tab-content hidden">
-                            <h3 class="text-xl font-semibold brand-text-dark mb-4">Engaging Stakeholders for Impact</h3>
-                            <p class="text-gray-600 mb-6">A key part of my role as a Business Analyst is effective communication and collaboration. I am experienced in bridging the gap between technical possibilities and business needs, ensuring projects are aligned with strategic goals and that stakeholders are empowered to use new tools and insights.</p>
-                            <ul class="list-disc list-inside space-y-2 text-gray-600">
-                                <li>Led client project meetings independently to gather requirements and propose solution frameworks.</li>
-                                <li>Delivered key presentations to acquire new projects and managed five concurrently.</li>
-                                <li>Trained stakeholders on tool usage, data interpretation, and insight generation.</li>
-                                <li>Partnered with PR teams to develop materials that effectively communicated company news.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         
         <section id="timeline" class="py-20 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -416,155 +218,25 @@
                     <h2 class="text-3xl font-bold brand-text-dark">Journey & Background</h2>
                     <p class="mt-2 text-lg text-gray-600">A summary of my professional and academic milestones.</p>
                 </div>
-                
                 <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-12">
-                    
-                    <!-- Column 1: Career Timeline -->
-                    <div>
-                        <h3 class="text-2xl font-bold brand-text-dark mb-8 text-center md:text-left">Career Timeline</h3>
-                        <div class="relative">
-                            <div class="absolute left-0 h-full border-l-2 border-gray-200" style="margin-left: -2.3rem;"></div>
-                            <div class="space-y-12">
-                                
-                                <div class="relative pl-8">
-                                     <div class="timeline-item"></div>
-                                    <p class="text-sm font-semibold brand-text">Feb 2025 - Present</p>
-                                    <h4 class="font-bold text-lg brand-text-dark">Student Ambassador</h4>
-                                    <p class="text-gray-500">Yugo Student Accommodation</p>
-                                </div>
-        
-                                <div class="relative pl-8">
-                                     <div class="timeline-item"></div>
-                                    <p class="text-sm font-semibold brand-text">Contractor - April 2025</p>
-                                    <h4 class="font-bold text-lg brand-text-dark">Prompt Engineer</h4>
-                                    <p class="text-gray-500">Moore Cooperative</p>
-                                </div>
-        
-                                <div class="relative pl-8">
-                                     <div class="timeline-item"></div>
-                                    <p class="text-sm font-semibold brand-text">Feb 2022 - Sep 2024</p>
-                                    <h4 class="font-bold text-lg brand-text-dark">Senior Software Analyst</h4>
-                                    <p class="text-gray-500">Bounteous X Accolite</p>
-                                </div>
-        
-                                <div class="relative pl-8">
-                                    <div class="timeline-item"></div>
-                                    <p class="text-sm font-semibold brand-text">Jul 2020 - Nov 2020</p>
-                                    <h4 class="font-bold text-lg brand-text-dark">Marketing Analyst Intern</h4>
-                                    <p class="text-gray-500">Testpress</p>
-                                </div>
-        
-                                <div class="relative pl-8">
-                                    <div class="timeline-item"></div>
-                                    <p class="text-sm font-semibold brand-text">May 2020 - June 2020</p>
-                                    <h4 class="font-bold text-lg brand-text-dark">Content Writer - Intern</h4>
-                                    <p class="text-gray-500">Thunderbrand Solutions</p>
-                                </div>
-        
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Column 2: Education -->
-                    <div>
-                        <h3 class="text-2xl font-bold brand-text-dark mb-8 text-center md:text-left">Education</h3>
-                        <div class="relative">
-                            <div class="absolute left-0 h-full border-l-2 border-gray-200" style="margin-left: -2.3rem;"></div>
-                            <div class="space-y-12">
-                                <div class="relative pl-8">
-                                    <div class="timeline-item"></div>
-                                    <p class="text-sm font-semibold brand-text">Expected Sep 2025</p>
-                                    <h4 class="font-bold text-lg brand-text-dark">MSc Business Analytics</h4>
-                                    <p class="text-gray-500">University of Edinburgh</p>
-                                </div>
-                                <div class="relative pl-8">
-                                     <div class="timeline-item"></div>
-                                    <p class="text-sm font-semibold brand-text">May 2022</p>
-                                    <h4 class="font-bold text-lg brand-text-dark">B.E Computer Science & Engineering</h4>
-                                    <p class="text-gray-500">Easwari Engineering College</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
+                    <!-- Timeline Content remains the same -->
+                    <div> <h3 class="text-2xl font-bold brand-text-dark mb-8 text-center md:text-left">Career Timeline</h3> <div class="relative"> <div class="absolute left-0 h-full border-l-2 border-gray-200" style="margin-left: -2.3rem;"></div> <div class="space-y-12"> <div class="relative pl-8"> <div class="timeline-item"></div> <p class="text-sm font-semibold brand-text">Feb 2025 - Present</p> <h4 class="font-bold text-lg brand-text-dark">Student Ambassador</h4> <p class="text-gray-500">Yugo Student Accommodation</p> </div> <div class="relative pl-8"> <div class="timeline-item"></div> <p class="text-sm font-semibold brand-text">Contractor - April 2025</p> <h4 class="font-bold text-lg brand-text-dark">Prompt Engineer</h4> <p class="text-gray-500">Moore Cooperative</p> </div> <div class="relative pl-8"> <div class="timeline-item"></div> <p class="text-sm font-semibold brand-text">Feb 2022 - Sep 2024</p> <h4 class="font-bold text-lg brand-text-dark">Senior Software Analyst</h4> <p class="text-gray-500">Bounteous X Accolite</p> </div> <div class="relative pl-8"> <div class="timeline-item"></div> <p class="text-sm font-semibold brand-text">Jul 2020 - Nov 2020</p> <h4 class="font-bold text-lg brand-text-dark">Marketing Analyst Intern</h4> <p class="text-gray-500">Testpress</p> </div> <div class="relative pl-8"> <div class="timeline-item"></div> <p class="text-sm font-semibold brand-text">May 2020 - June 2020</p> <h4 class="font-bold text-lg brand-text-dark">Content Writer - Intern</h4> <p class="text-gray-500">Thunderbrand Solutions</p> </div> </div> </div> </div>
+                    <div> <h3 class="text-2xl font-bold brand-text-dark mb-8 text-center md:text-left">Education</h3> <div class="relative"> <div class="absolute left-0 h-full border-l-2 border-gray-200" style="margin-left: -2.3rem;"></div> <div class="space-y-12"> <div class="relative pl-8"> <div class="timeline-item"></div> <p class="text-sm font-semibold brand-text">Expected Sep 2025</p> <h4 class="font-bold text-lg brand-text-dark">MSc Business Analytics</h4> <p class="text-gray-500">University of Edinburgh</p> </div> <div class="relative pl-8"> <div class="timeline-item"></div> <p class="text-sm font-semibold brand-text">May 2022</p> <h4 class="font-bold text-lg brand-text-dark">B.E Computer Science & Engineering</h4> <p class="text-gray-500">Easwari Engineering College</p> </div> </div> </div> </div>
                 </div>
             </div>
         </section>
-        <!-- <section id="timeline" class="py-20 bg-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold brand-text-dark">Career & Education Timeline</h2>
-                    <p class="mt-2 text-lg text-gray-600">A summary of my professional journey and academic background.</p>
-                </div>
-                <div class="relative max-w-2xl mx-auto">
-                    <div class="absolute left-0 h-full border-l-2 border-gray-200" style="margin-left: -2.3rem;"></div>
-                    <div class="space-y-12">
-                        <div class="relative pl-8">
-                            <div class="timeline-item"></div>
-                            <p class="text-sm font-semibold brand-text">Expected Sep 2025</p>
-                            <h3 class="font-bold text-lg brand-text-dark">MSc Business Analytics</h3>
-                            <p class="text-gray-500">University of Edinburgh</p>
-                        </div>
-                        <div class="relative pl-8">
-                             <div class="timeline-item"></div>
-                            <p class="text-sm font-semibold brand-text">Feb 2022 - Sep 2024</p>
-                            <h3 class="font-bold text-lg brand-text-dark">Senior Software Analyst</h3>
-                            <p class="text-gray-500">Bounteous X Accolite</p>
-                        </div>
-                        <div class="relative pl-8">
-                             <div class="timeline-item"></div>
-                            <p class="text-sm font-semibold brand-text">May 2022</p>
-                            <h3 class="font-bold text-lg brand-text-dark">BEng Computer Science & Engineering</h3>
-                            <p class="text-gray-500">Easwari Engineering College</p>
-                        </div>
-                        <div class="relative pl-8">
-                            <div class="timeline-item"></div>
-                            <p class="text-sm font-semibold brand-text">Jul 2020 - Nov 2020</p>
-                            <h3 class="font-bold text-lg brand-text-dark">Marketing Analyst Intern</h3>
-                            <p class="text-gray-500">Testpress</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
 
         <section id="skills" class="py-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
+                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold brand-text-dark">Technical Skillset</h2>
                     <p class="mt-2 text-lg text-gray-600">The tools and technologies I use to drive results.</p>
                 </div>
                 <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-8 text-left">
-                    <div>
-                        <h3 class="font-bold text-lg brand-text-dark mb-3">📊 Analytics & BI</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>Looker Studio</li>
-                            <li>Power BI</li>
-                            <li>Google Analytics 4</li>
-                            <li>Google Tag Manager</li>
-                            <li>Google Ads & GMP</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg brand-text-dark mb-3">💻 Languages & Data</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>Python Data Analysis</li>
-                            <li>SQL</li>
-                            <li>Java</li>
-                            <li>JavaScript</li>
-                            <li>HTML/CSS/React</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg brand-text-dark mb-3">🤖 AI & Collaboration</h3>
-                         <ul class="space-y-2 text-gray-600">
-                            <li>AI & Prompt Engineering</li>
-                            <li>Simulation Modelling</li>
-                            <li>Jira/Confluence</li>
-                            <li>Miro</li>
-                            <li>Notion</li>
-                        </ul>
-                    </div>
+                    <!-- Skills Content remains the same -->
+                    <div> <h3 class="font-bold text-lg brand-text-dark mb-3">📊 Analytics & BI</h3> <ul class="space-y-2 text-gray-600"> <li>Looker Studio</li> <li>Power BI</li> <li>Google Analytics 4</li> <li>Google Tag Manager</li> <li>Google Ads & GMP</li> </ul> </div>
+                    <div> <h3 class="font-bold text-lg brand-text-dark mb-3">💻 Languages & Data</h3> <ul class="space-y-2 text-gray-600"> <li>Python Data Analysis</li> <li>SQL</li> <li>Java</li> <li>JavaScript</li> <li>HTML/CSS/React</li> </ul> </div>
+                    <div> <h3 class="font-bold text-lg brand-text-dark mb-3">🤖 AI & Collaboration</h3> <ul class="space-y-2 text-gray-600"> <li>AI & Prompt Engineering</li> <li>Simulation Modelling</li> <li>Jira/Confluence</li> <li>Miro</li> <li>Notion</li> </ul> </div>
                 </div>
             </div>
         </section>
@@ -575,7 +247,7 @@
                 <p class="mt-2 text-lg text-gray-600 max-w-xl mx-auto">I'm excited about the opportunity to bring my data-driven expertise to a new challenge. Let's talk about how I can help your team achieve its goals.</p>
                 
                 <div class="max-w-xl mx-auto mt-8">
-                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <input type="text" name="name" placeholder="Your Name" class="w-full p-3 rounded-md border border-[#D3C5BC] focus:outline-none focus:ring-2 focus:ring-[#A47E64]" required>
                             <input type="email" name="email" placeholder="Your Email" class="w-full p-3 rounded-md border border-[#D3C5BC] focus:outline-none focus:ring-2 focus:ring-[#A47E64]" required>
@@ -598,6 +270,14 @@
         </footer>
     </main>
 
+    <!-- Toast Notifications -->
+    <div id="toast-success" class="toast bg-green-500">
+        Message sent successfully!
+    </div>
+    <div id="toast-failure" class="toast bg-red-500">
+        Something went wrong. Please try again.
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Mobile Menu Toggle
@@ -613,8 +293,12 @@
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const target = document.getElementById(tab.dataset.tab);
-                    tabs.forEach(t => t.classList.remove('active'));
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                    });
                     tab.classList.add('active');
+                    tab.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
                     tabContents.forEach(content => content.classList.add('hidden'));
                     target.classList.remove('hidden');
                 });
@@ -639,74 +323,82 @@
             }, { rootMargin: `-${headerHeight}px 0px 0px 0px`, threshold: 0.3 });
             sections.forEach(section => observer.observe(section));
 
-            // Chart.js Visualization
-            const ctx = document.getElementById('retentionChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Client Group A', 'Client Group B', 'Client Group C'],
-                    datasets: [{
-                        label: 'Retention Rate Before',
-                        data: [65, 72, 68],
-                        backgroundColor: '#D3C5BC',
-                        borderColor: '#C1B2A9',
-                        borderWidth: 1
-                    }, {
-                        label: 'Retention Rate After',
-                        data: [75, 82, 79],
-                        backgroundColor: '#A47E64',
-                        borderColor: '#8C6C58',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: { y: { beginAtZero: true, max: 100, ticks: { callback: value => value + '%' } } },
-                    plugins: {
-                        legend: { position: 'top' },
-                        title: { display: true, text: 'Client Retention Uplift (Average +15%)' },
-                        tooltip: { callbacks: { label: context => `${context.dataset.label || ''}: ${context.parsed.y || 0}%` } }
-                    }
-                }
-            });
-
             // Typing Animation for H1
-            const roles = [
-                "Business Analyst (Tech/AI)",
-                "Marketing & Data Analyst",
-                "BI (Business Intelligence) Analyst",
-                "Analytics Consultant"
-            ];
-            let roleIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
             const typerElement = document.getElementById('role-typer');
-
-            function type() {
-                const currentRole = roles[roleIndex];
-                let typeSpeed = 50;
-
-                if (isDeleting) {
-                    typerElement.textContent = currentRole.substring(0, charIndex - 1);
-                    charIndex--;
-                    typeSpeed = 20; // Faster erasing speed
-                } else {
-                    typerElement.textContent = currentRole.substring(0, charIndex + 1);
-                    charIndex++;
+            if (typerElement) {
+                const roles = ["Business Analyst (Tech/AI)", "Marketing & Data Analyst", "BI (Business Intelligence) Analyst", "Analytics Consultant"];
+                let roleIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                function type() {
+                    const currentRole = roles[roleIndex];
+                    let typeSpeed = 60;
+                    if (isDeleting) {
+                        typeSpeed = 20;
+                        typerElement.textContent = currentRole.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        typerElement.textContent = currentRole.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+                    if (!isDeleting && charIndex === currentRole.length) {
+                        typeSpeed = 1000;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        roleIndex = (roleIndex + 1) % roles.length;
+                        typeSpeed = 300;
+                    }
+                    setTimeout(type, typeSpeed);
                 }
-
-                if (!isDeleting && charIndex === currentRole.length) {
-                    typeSpeed = 1000; // Pause at end
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % roles.length;
-                }
-
-                setTimeout(type, typeSpeed);
+                type();
             }
-            type();
+
+            // Contact Form Submission with Toast Notifications
+            const contactForm = document.getElementById('contact-form');
+            const toastSuccess = document.getElementById('toast-success');
+            const toastFailure = document.getElementById('toast-failure');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    const action = contactForm.getAttribute('action');
+
+                    fetch(action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            showToast(toastSuccess);
+                            contactForm.reset();
+                        } else {
+                            response.json().then(data => {
+                                if (Object.hasOwn(data, 'errors')) {
+                                    // Handle specific form errors if necessary
+                                    console.error(data.errors.map(error => error.message).join(", "));
+                                }
+                                showToast(toastFailure);
+                            })
+                        }
+                    }).catch(error => {
+                        console.error('Form submission error:', error);
+                        showToast(toastFailure);
+                    });
+                });
+            }
+
+            function showToast(toastElement) {
+                if (!toastElement) return;
+                toastElement.style.opacity = '1';
+                setTimeout(() => {
+                    toastElement.style.opacity = '0';
+                }, 3000); // Hide after 3 seconds
+            }
         });
     </script>
 
